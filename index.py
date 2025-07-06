@@ -11,6 +11,15 @@ from conditional_prob import conditional_prob_calc
 #streamlit configs 
 st.set_page_config(layout="wide") 
 
+
+path="C:/Users/naman/OneDrive/Desktop/placement/Stockx/db/ticker.xlsx"
+# Load downloaded CSV from NSE
+df = pd.read_excel(path)
+tickers = df['Symbol'].tolist()
+#NAN in pandas is float
+tickers_ns = [str(symbol) + '.NS' for symbol in tickers if pd.notna(symbol)]
+
+
 selected_value=""
 
 st.title("STOCKX")
